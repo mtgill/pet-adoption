@@ -20,6 +20,10 @@ body {
     text-align: center;
 }
 
+.dino {
+    background-color: coral;
+}
+
 .card img {
     max-width: 50%;
     max-height: 50%;

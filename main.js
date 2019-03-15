@@ -211,11 +211,13 @@ const pets = [
     }
   ];
 
+
+// print to DOM function 
   const printToDom = (divId, textToPrint) => {
     const selectedDiv = document.getElementById(divId);
     selectedDiv.innerHTML = textToPrint;
 };
-
+// function to build individual pet cards - uses for each loop
 const petCardBuilder = (petArray) => {
     let domString = '';
 
@@ -226,10 +228,38 @@ const petCardBuilder = (petArray) => {
         domString += `<img src=${pet.imageUrl} />`;
         domString += `<h3>Color: ${pet.color}</h3>`;
         domString += `<h3>Special Skill: ${pet.specialSkill}</h3>`;
-        domString += `<h3>Type of pet: ${pet.type}</h3>`;
+        domString += `<div class="${pet.type}"><h3>${pet.type}</h3></div>`;
         domString += `</div>`;
     });
     printToDom('pet-cards', domString);
+};
+
+// function to assign pet types to specific buttons. Creates array and tests the pet type against the target id
+const buttonClick = (e) => {
+    const buttonId = e.target.id;
+
+    console.log('you clicked a button', e.target.id);
+    const selectedPets = [];
+    
+    pets.forEach((pet) => {
+        if (pet.type === buttonId) {
+            selectedPets.push(pet);
+        }
+    });
+
+    if(buttonId === 'All') {
+        petCardBuilder(pets);
+      } else {
+        petCardBuilder(selectedPets);
+      }
+};
+
+// add event listeners to buttons 
+const buttonEvents = () => {
+    document.getElementById('dog').addEventListener('click', buttonClick);
+    document.getElementById('cat').addEventListener('click', buttonClick);
+    document.getElementById('dino').addEventListener('click', buttonClick);
+    document.getElementById('All').addEventListener('click', buttonClick);
 };
 
 
@@ -238,8 +268,9 @@ const petCardBuilder = (petArray) => {
 
 
 
-
 const init = () => {
+
+    buttonEvents();
     petCardBuilder(pets);
 
 };
