@@ -4,7 +4,7 @@ This site shows all dogs, dinos, and cats that are available for adoption. There
 
 ## Screenshots
 
-
+![pet-adoption screenshot](https://raw.githubusercontent.com/mtgill/pet-adoption/master/screenshot/pet-adoption-screenshot.PNG "pet-adoption screenshot")
 
 
 ## Getting Started 
